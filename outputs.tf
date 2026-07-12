@@ -1,3 +1,7 @@
+output "log_analytics_clusters_id" {
+  description = "Map of id values across all log_analytics_clusters, keyed the same as var.log_analytics_clusters"
+  value       = { for k, v in azurerm_log_analytics_cluster.log_analytics_clusters : k => v.id }
+}
 output "log_analytics_clusters_cluster_id" {
   description = "Map of cluster_id values across all log_analytics_clusters, keyed the same as var.log_analytics_clusters"
   value       = { for k, v in azurerm_log_analytics_cluster.log_analytics_clusters : k => v.cluster_id }
