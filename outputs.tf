@@ -8,7 +8,7 @@ output "log_analytics_clusters_cluster_id" {
 }
 output "log_analytics_clusters_identity" {
   description = "Map of identity values across all log_analytics_clusters, keyed the same as var.log_analytics_clusters"
-  value       = { for k, v in azurerm_log_analytics_cluster.log_analytics_clusters : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_log_analytics_cluster.log_analytics_clusters : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "log_analytics_clusters_location" {
   description = "Map of location values across all log_analytics_clusters, keyed the same as var.log_analytics_clusters"
